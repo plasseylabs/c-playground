@@ -14,13 +14,16 @@ void print_max_element_positions(int max_element_positions[]) {
 long long countSubarrays(int *nums, int numsSize, int k) {
 	int max_element = INT_MIN;
 	int max_element_positions[1024 * 1024] = {0};
+	int last_index = 0;
 	for (int i = 0, p = 0; i < numsSize; i++) {
 		if (max_element < nums[i]) {
 			max_element = nums[i];
 			p = 0;
 		}
-		if (max_element == nums[i])
+		if (max_element == nums[i]) {
 			max_element_positions[p++] = i;
+			last_index = p;
+		}
 		if (i == numsSize - 1) {
 			for (; p < numsSize; p++) {
 				max_element_positions[p] = -1;
@@ -32,9 +35,9 @@ long long countSubarrays(int *nums, int numsSize, int k) {
 
 	long long array_count = 0;
 
-	for (int i = 0, j = k - 1; max_element_positions[j] > 0; i++, j++) {
-		array_count += (max_element_positions[i]) *
-			       (numsSize - max_element_positions[j]);
+	for (int i = 0, j = k - 1; j < last_index; i++, j++) {
+		array_count += (max_element_positions[i] + 1) *
+			       (numsSize - max_element_positions[j] - 1);
 	}
 
 	return array_count;
