@@ -1,0 +1,6 @@
+#ifndef PLASSEYLAB_PLAYGROUND_COUNT_SUBARRAYS_H
+#define PLASSEYLAB_PLAYGROUND_COUNT_SUBARRAYS_H
+
+long long countSubarrays(int *nums, int numsSize, int k);
+
+#endif // !PLASSEYLAB_PLAYGROUND_COUNT_SUBARRAYS_H
