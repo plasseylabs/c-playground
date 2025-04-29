@@ -36,8 +36,8 @@ long long countSubarrays(int *nums, int numsSize, int k) {
 	long long array_count = 0;
 
 	for (int i = 0, j = k - 1; j < last_index; i++, j++) {
-		array_count += (max_element_positions[i] + 1) *
-			       (numsSize - max_element_positions[j] - 1);
+		array_count += (max_element_positions[i]) *
+			       (numsSize - max_element_positions[j]);
 	}
 
 	return array_count;
