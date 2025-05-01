@@ -6,7 +6,7 @@
 #include "lib.h"
 
 void array_display(int a[], int a_length) {
-	for (int i = 0; i < a_length; i++) {
+	for (int i = 0; i < a_length; ++i) {
 		printf("%d ", a[i]);
 	}
 	printf("\n");
@@ -14,11 +14,11 @@ void array_display(int a[], int a_length) {
 
 int compare(const void *a, const void *b) { return (*(int *)a - *(int *)b); }
 
-int check(int *tasks, int *workers, int workersSize, int pills, int strength,
-	  int median) {
+uint check(int *tasks, int *workers, const int workersSize, int pills,
+	   const int strength, const int median) {
 	int ws[workersSize];
 	int ptr = workersSize - 1;
-	int head = workersSize - 1, tail = workersSize - 1;
+	uint head = ptr, tail = ptr;
 	for (int i = median - 1; i >= 0; --i) {
 		while (ptr >= workersSize - median &&
 		       workers[ptr] + strength >= tasks[i]) {
@@ -28,14 +28,15 @@ int check(int *tasks, int *workers, int workersSize, int pills, int strength,
 		}
 		if (head == tail) {
 			return 0;
-		} else if (ws[tail] >= tasks[i]) {
-			tail--;
+		}
+		if (ws[tail] >= tasks[i]) {
+			--tail;
 		} else {
 			if (!pills) {
 				return 0;
 			}
 			--pills;
-			head++;
+			++head;
 		}
 	}
 
@@ -47,11 +48,11 @@ int maxTaskAssign(int *tasks, int tasksSize, int *workers, int workersSize,
 	qsort(tasks, tasksSize, sizeof(int), compare);
 	qsort(workers, workersSize, sizeof(int), compare);
 
-	int left = 1,
-	    right = (tasksSize < workersSize) ? tasksSize : workersSize,
-	    max_number = 0;
+	uint left = 1,
+	     right = (tasksSize < workersSize) ? tasksSize : workersSize,
+	     max_number = 0;
 	while (left <= right) {
-		int median = (left + right) / 2;
+		uint median = (left + right) / 2;
 		if (check(tasks, workers, workersSize, pills, strength,
 			  median)) {
 			max_number = median;
