@@ -11,23 +11,18 @@ char *pushDominoes(char *dominoes) {
 		return NULL;
 
 	int string_length = strlen(dominoes);
-	char *output = (char *)malloc((string_length + 1) * sizeof(char *));
-	if (!output)
-		return NULL;
-	for (int i = 0; i <= string_length + 1; i++) {
-		output[i] = '\0';
-	}
+	char output[100000] = {0};
 
 	Force force = NEUTRAL;
 	for (int left = 0, right = 0; right < string_length; ++right) {
 		if ('L' == dominoes[right]) {
 			if (NEUTRAL == force) {
-				for (int i = left; i <= right; i++) {
+				for (int i = left; i <= right; ++i) {
 					output[i] = 'L';
 				}
 			} else {
 				int median = (right + left) / 2;
-				for (int i = median + 1; i <= right; i++) {
+				for (int i = median + 1; i <= right; ++i) {
 					output[i] = 'L';
 				}
 				if (!((right - left) & 1))
@@ -41,6 +36,7 @@ char *pushDominoes(char *dominoes) {
 			force = RIGHT;
 			output[right] = 'R';
 			left = right;
+			continue;
 		}
 		if ('.' == dominoes[right]) {
 			if (RIGHT == force) {
@@ -49,5 +45,9 @@ char *pushDominoes(char *dominoes) {
 				output[right] = '.';
 		}
 	}
-	return output;
+	char *result = (char *)malloc((string_length + 1) * sizeof(char *));
+	if (!result)
+		return NULL;
+	memcpy(result, output, string_length + 1);
+	return result;
 }
