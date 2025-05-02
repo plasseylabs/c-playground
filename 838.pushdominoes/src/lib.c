@@ -19,7 +19,7 @@ char *pushDominoes(char *dominoes) {
 	}
 
 	Force force = NEUTRAL;
-	for (int left = 0, right = 0; right < string_length; right++) {
+	for (int left = 0, right = 0; right < string_length; ++right) {
 		if ('L' == dominoes[right]) {
 			if (NEUTRAL == force) {
 				for (int i = left; i <= right; i++) {
