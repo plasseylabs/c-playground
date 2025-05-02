@@ -4,6 +4,7 @@
 
 #include "lib.h"
 
+#define MAX_LENGTH 100001
 typedef enum { LEFT, RIGHT, NEUTRAL } Force;
 
 char *pushDominoes(char *dominoes) {
@@ -11,10 +12,10 @@ char *pushDominoes(char *dominoes) {
 		return NULL;
 
 	int string_length = strlen(dominoes);
-	char output[100000] = {0};
+	char output[MAX_LENGTH] = {0};
 
 	Force force = NEUTRAL;
-	for (int left = 0, right = 0; right < string_length; ++right) {
+	for (int left = 0, right = 0; dominoes[right]; ++right) {
 		if ('L' == dominoes[right]) {
 			if (NEUTRAL == force) {
 				for (int i = left; i <= right; ++i) {
