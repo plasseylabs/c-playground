@@ -34,6 +34,7 @@ char *pushDominoes(char *dominoes) {
 					output[median] = '.';
 			}
 			force = NEUTRAL;
+			continue;
 		}
 		if ('R' == dominoes[right]) {
 			force = RIGHT;
