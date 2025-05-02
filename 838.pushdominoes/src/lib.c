@@ -26,11 +26,11 @@ char *pushDominoes(char *dominoes) {
 					output[i] = 'L';
 				}
 			} else {
-				int median = (right + left + 1) / 2;
-				for (int i = median + 1; i <= right; i++) {
+				int median = (right + left) / 2;
+				for (int i = median; i <= right; i++) {
 					output[i] = 'L';
 				}
-				if (!((right - left) & 1))
+				if (((right - left) & 1))
 					output[median] = '.';
 			}
 			force = NEUTRAL;
@@ -42,9 +42,9 @@ char *pushDominoes(char *dominoes) {
 			left = right;
 		}
 		if (dominoes[right] == '.') {
-			if (RIGHT == force)
+			if (RIGHT == force) {
 				output[right] = 'R';
-			else
+			} else
 				output[right] = '.';
 		}
 	}
