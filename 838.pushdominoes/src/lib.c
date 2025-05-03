@@ -16,7 +16,8 @@ char *pushDominoes(char *dominoes) {
 	Force force = NEUTRAL;
 	int left = 0, right = 0;
 	for (; dominoes[right]; ++right) {
-		if ('L' == dominoes[right]) {
+		switch (dominoes[right]) {
+		case 'L':
 			if (NEUTRAL == force) {
 				for (int i = left; i <= right; ++i) {
 					output[i] = 'L';
@@ -31,15 +32,13 @@ char *pushDominoes(char *dominoes) {
 			}
 			force = NEUTRAL;
 			left = right;
-			continue;
-		}
-		if ('R' == dominoes[right]) {
+			break;
+		case 'R':
 			force = RIGHT;
 			output[right] = 'R';
 			left = right;
-			continue;
-		}
-		if ('.' == dominoes[right]) {
+			break;
+		case '.':
 			if (RIGHT == force) {
 				output[right] = 'R';
 			} else
