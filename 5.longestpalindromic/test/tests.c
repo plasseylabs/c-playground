@@ -42,4 +42,11 @@ int main(void) {
 	assert(!strcmp(result, "aa"));
 	if (result)
 		free(result);
+
+	char *line6 = "aaaaa";
+	result = longestPalindrome(line6);
+	printf("%s longest substing: %s\n", line6, result);
+	assert(!strcmp(result, "aaaaa"));
+	if (result)
+		free(result);
 }
