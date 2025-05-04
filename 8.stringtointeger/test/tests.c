@@ -75,6 +75,16 @@ int main(void) {
 	printf("[%s,%d]\n", num, result);
 	assert(-2147483647 == result);
 
+	num = "2147483648";
+	result = myAtoi(num);
+	printf("[%s,%d]\n", num, result);
+	assert(2147483647 == result);
+
+	num = "2147483646";
+	result = myAtoi(num);
+	printf("[%s,%d]\n", num, result);
+	assert(2147483646 == result);
+
 	printf("%d - %d\n", INT_MIN, INT_MAX);
 	printf("%d - %d\n", int_min, int_max);
 }
