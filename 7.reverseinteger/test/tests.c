@@ -28,10 +28,10 @@ int main(void) {
 	printf("[%d,%d]\n", num, result);
 	assert(0 == result);
 
-	num = 1534236469;
+	num = 1463847412;
 	result = reverse(num);
 	printf("[%d,%d]\n", num, result);
-	assert(0 == result);
+	assert(2147483641 == result);
 
 	num = 1;
 	for (int i = 0; i < 30; ++i) {
