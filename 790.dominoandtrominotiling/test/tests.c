@@ -33,5 +33,5 @@ int main(void) {
 	n = 1001;
 	result = numTilings(n);
 	printf("n: %4d, variants: %9d\n", n, result);
-	assert(result == 0);
+	assert(result == 327604117);
 }
