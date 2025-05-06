@@ -1,0 +1,8 @@
+#ifndef PLASSEYLAB_PLAYGROUND_PALINDROME_H
+#define PLASSEYLAB_PLAYGROUND_PALINDROME_H
+
+#include <unistd.h>
+
+int isPalindrome(int x);
+
+#endif // !PLASSEYLAB_PLAYGROUND_PALINDROME_H
