@@ -78,11 +78,10 @@ char *intToRoman(int num) {
 	}
 	while (num) {
 		roman[i++] = 'I';
-		num -= 1;
+		--num;
 	}
 
 	char *result = (char *)malloc((strlen(roman) + 1) * sizeof(char *));
 	strcpy(result, roman);
 	return result;
 }
-LVIII
