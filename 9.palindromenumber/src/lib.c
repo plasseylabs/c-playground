@@ -7,14 +7,18 @@ int isPalindrome(int x) {
 		return 1;
 	if (x < 0 || x % 10 == 0)
 		return 0;
-	long result = 0, temp = x;
-	while (x) {
+	if (x < 10)
+		return 1;
+
+	int result = 0;
+	while (x > result) {
 		int rem = x % 10;
 		result = result * 10 + rem;
-		x /= 10;
-		if (result == x || result == temp) {
+		if (result == x)
 			return 1;
-		}
+		x /= 10;
+		if (!result ^ x)
+			return 1;
 	}
 	return 0;
 }
