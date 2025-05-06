@@ -36,12 +36,10 @@ char *intToRoman(int num) {
 		roman[i++] = 'C';
 		roman[i++] = 'M';
 		num -= 900;
-	}
-	if (num >= 500) {
+	} else if (num >= 500) {
 		roman[i++] = 'D';
 		num -= 500;
-	}
-	if (num >= 400) {
+	} else if (num >= 400) {
 		roman[i++] = 'C';
 		roman[i++] = 'D';
 		num -= 400;
@@ -54,12 +52,10 @@ char *intToRoman(int num) {
 		roman[i++] = 'X';
 		roman[i++] = 'C';
 		num -= 90;
-	}
-	if (num >= 50) {
+	} else if (num >= 50) {
 		roman[i++] = 'L';
 		num -= 50;
-	}
-	if (num >= 40) {
+	} else if (num >= 40) {
 		roman[i++] = 'X';
 		roman[i++] = 'L';
 		num -= 40;
@@ -72,12 +68,10 @@ char *intToRoman(int num) {
 		roman[i++] = 'I';
 		roman[i++] = 'X';
 		num -= 9;
-	}
-	if (num >= 5) {
+	} else if (num >= 5) {
 		roman[i++] = 'V';
 		num -= 5;
-	}
-	if (num >= 4) {
+	} else if (num >= 4) {
 		roman[i++] = 'I';
 		roman[i++] = 'V';
 		num -= 4;
@@ -91,3 +85,4 @@ char *intToRoman(int num) {
 	strcpy(result, roman);
 	return result;
 }
+LVIII
